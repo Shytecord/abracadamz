@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    box-sizing: border-box;
+    padding-top: 10vh;
+}
+
+.topnav {
+    height: 10vh;
+    width: 100vw;
+
+    background-color: #212529;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    
+    user-select: none;
+    z-index: 2;
+}
+
+.topnav .links {
+    height: 10vh;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2vw;
+
+    box-sizing: border-box;
+    padding-left: 2vw;
+}
+
+.topnav .links a {
+    color: #F8F9FA;
+    font-size: 1.5em;
+    font-family: "Google Sans Flex";
+
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.topnav .links a:hover {
+    color: #DEE2E6;
+}
+
+.topnav .account {
+    height: 10vh;
+    width: auto;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    border-left: 2px solid #DEE2E6;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1vw;
+
+    box-sizing: border-box;
+    padding-right: 1vw;
+    padding-left: 1vw;
+}
+
+.topnav .account .avatar {
+    height: 8vh;
+    width: 8vh;
+
+    border-radius: 90px;
+}
+
+.topnav .account .display {
+    color: white;
+    font-size: 1.4em;
+    font-family: "Google Sans Flex";
+    transition: color 0.2s ease;
+}
+
+.topnav .account:hover {
+    cursor: pointer;
+}
+
+.topnav .account:hover .display {
+    color: #DEE2E6;
+}
+
+.topnav .logo {
+    height: 8vh;
+    width: 8vh;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mobile-links {
+    width: 100vw;
+    height: auto;
+    min-height: 10vh;
+
+    position: fixed;
+    top: 10vh;
+    left: 0;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    gap: 4vh;
+    
+    background-color: #495057;
+
+    box-sizing: border-box;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+
+    transform: translateY(-50vh);
+    transition: transform 0.3s ease;
+
+    display: none;
+    z-index: 1;
+}
+
+.mobile-links a {
+    color: #F8F9FA;
+    font-size: 2em;
+    font-family: "Google Sans Flex";
+
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#openMobile {
+    height: 8vh;
+    width: 8vh;
+    
+    position: absolute;
+    top: 1vh;
+    left: 1vh;
+
+    background-color: transparent;
+    border: 0;
+
+    display: none;
+    transition: transform 0.3s ease;
+}
+
+#openMobile span {
+    font-size: 3.5em;
+    color: #F8F9FA;
+}
+
+@media screen and (max-width: 768px) {
+    .topnav {
+        height: 10vh;
+    }
+
+    .topnav .links {
+        display: none;
+    }
+
+    .topnav .account {
+        border: 0;
+        gap: 6vw;
+    }
+
+    #openMobile {
+        display: block;
+    }
+
+    .mobile-links {
+        display: flex;
+    }
+
+    .topnav .logo {
+        height: 6vh;
+        width: 6vh;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

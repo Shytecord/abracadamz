@@ -1,0 +1,46 @@
+= Shytecord
+Abracadamz
+:toc:
+
+== What is this repo?
+This is the source code for my website (Abracadamz) aswell as a place to show off my projects. The website also serves as the home of the Shytecord, which is my fun little group of friends that I make content with.
+
+== How to run
+
+You'll need NodeJS (This was created of 24.18.0, other versions may work but I haven't tested them). You'll also need a Google Cloud API Key with access to YouTube Data API V3, aswell as a MongoDB Atlas instance (you can also usee a self hosted db but I haven't tested that).
+
+Config (/config.json)
+```
+    {
+        "mongo": {
+            "username": "MONGODB USERNAME"
+        },
+        "_comment": "env is just used as the database name to keep live data from testing. It can really be anything",
+        "env": "DEV", 
+        "channelId": "YOUTUBE CHANNEL ID",
+        "web": {
+            "_comment": "Host should be 0.0.0.0 only when using in production (aka serving to the public). You can use 127.0.0.1 to test the site or while using a reverse proxy like nginx",
+            "host": "127.0.0.1",
+            "port": 8080
+        }
+    }
+```
+You can use https://tunepocket.com/youtube-channel-id-finder[this website] to find your youtube channel id
+
+Secrets (/secrets.json):
+```
+    {
+        "mongo": {
+            "uri": "MONGODB CLUSTER ADDRESS",
+            "password": "MONGODB PASSWORD"
+        },
+        "google": {
+            "apiKey": "GOOGLE CLOUD API KEY"
+        }
+    }
+```
+
+And then just run "npm run start"
+
+== Other info
+The website should be fully mobile compatible (I suck at styling stuff so if mobile is broken give me some time to fix it and put in an issue)
