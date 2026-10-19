@@ -1,6 +1,5 @@
 const express = require("express");
 const http = require("http");
-const utils = require("./utils");
 const mongoose = require("mongoose");
 
 const config = require("./config.json");
