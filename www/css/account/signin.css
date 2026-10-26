@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("/css/topnav.css");
+@import url("/css/colors.css");
+
+body {
+    margin: 0;
+    height: auto;
+    min-height: 100dvh;
+    width: 100dvw;
+    background-color: var(--pale-slate);
+
+    font-family: "Google Sans Flex";
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    width: 100vw;
+    height: 86vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.form p {
+    font-size: 1.2em;
+    margin: 0;
+    font-family: "Google Sans Flex";
+}
+
+.form input {
+    width: 15vw;
+    height: 6vh;
+
+    outline: none;
+    background-color: transparent;
+    
+    border: 2px solid var(--slate-grey);
+    border-radius: 15px;
+
+    box-sizing: border-box;
+    padding-left: 0.5vw;
+}
+
+.form button {
+    width: 15vw;
+    height: 6vh;
+
+    outline: none;
+    background-color: var(--slate-grey);
+    color: var(--bright-snow);
+    
+    border: 2px solid var(--slate-grey);
+    border-radius: 15px;
+
+    box-sizing: border-box;
+    padding-left: 0.5vw;
+
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.form button:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--carbon-black);
+}
+
+.form #error {
+    width: 15vw;
+    color: red;
+    text-align: center;
+    font-size: 1em;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: scroll;
+        flex-direction: column;
+    }
+    
+    .form {
+        align-items: center;
+
+        width: 100vw;
+        height: auto;
+        flex: 1 0 auto;
+    }
+
+    .form p {
+        font-size: 2em;
+    }
+    
+    .form input {
+        width: 90vw;
+        height: 10vh;
+
+        padding-left: 4vw;
+        font-size: 1.5em;
+    }
+
+    .form button {
+        width: 90vw;
+        height: 10vh;
+
+        font-size: 1.5em;
+    }
+
+    .form #error {
+        font-size: 1.5em;
+        width: 90vw;
+        margin-bottom: 4vh;
+    }
+}

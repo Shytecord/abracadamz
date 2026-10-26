@@ -22,6 +22,10 @@ Config (/config.json)
             "_comment": "Host should be 0.0.0.0 only when using in production (aka serving to the public). You can use 127.0.0.1 to test the site or while using a reverse proxy like nginx",
             "host": "127.0.0.1",
             "port": 8080
+        },
+        "email": {
+            "_comment": "Email of sender (using zoho mail)",
+            "contact": "contact@abracadamz.shop"
         }
     }
 ```
@@ -36,6 +40,10 @@ Secrets (/secrets.json):
         },
         "google": {
             "apiKey": "GOOGLE CLOUD API KEY"
+        },
+        "email": {
+            "_comment": "Password of sender (using zoho mail)",
+            "contact": "ZOHO PASSWORD"
         }
     }
 ```

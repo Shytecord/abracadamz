@@ -9,7 +9,7 @@ body {
     height: 10vh;
     width: 100vw;
 
-    background-color: #212529;
+    background-color: var(--carbon-black);
 
     position: fixed;
     top: 0;
@@ -36,7 +36,7 @@ body {
 }
 
 .topnav .links a {
-    color: #F8F9FA;
+    color: var(--bright-snow);
     font-size: 1.5em;
     font-family: "Google Sans Flex";
 
@@ -115,7 +115,7 @@ body {
     flex-direction: column;
     gap: 4vh;
     
-    background-color: #495057;
+    background-color: var(--iron-grey);
 
     box-sizing: border-box;
     padding-top: 2vh;
@@ -129,7 +129,7 @@ body {
 }
 
 .mobile-links a {
-    color: #F8F9FA;
+    color: var(--bright-snow);
     font-size: 2em;
     font-family: "Google Sans Flex";
 
@@ -154,7 +154,7 @@ body {
 
 #openMobile span {
     font-size: 3.5em;
-    color: #F8F9FA;
+    color: var(--bright-snow);
 }
 
 @media screen and (max-width: 768px) {
@@ -168,7 +168,16 @@ body {
 
     .topnav .account {
         border: 0;
-        gap: 6vw;
+        padding-right: 4vw;
+    }
+
+    .topnav .account .display {
+        display: none;
+    }
+
+    .topnav .account .avatar {
+        height: 6vh;
+        width: 6vh;
     }
 
     #openMobile {

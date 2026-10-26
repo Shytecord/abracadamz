@@ -1,16 +1,11 @@
-const hamburger = document.getElementById("openMobile");
-let burgerOpen = false;
-
-hamburger.onclick = () => {
-    burgerOpen = !burgerOpen;
-
-    hamburger.style.transform = burgerOpen ? "rotate(90deg)" : "rotate(0)";
-    document.getElementById("mlinks").style.transform = burgerOpen ? "translateY(0)" : "translateY(-50vh)";
-}
-
 document.addEventListener("DOMContentLoaded", async () => {
-    const req = await fetch("/api/youtube/latest");
-    const res = await req.json();
+    const req1 = await fetch("/api/youtube/latest");
+    const res1 = await req1.json();
 
-    document.getElementById("latest-vid").src = `https://www.youtube.com/embed/${res.id}`;
+    document.getElementById("latest-vid").src = `https://www.youtube.com/embed/${res1.id}`;
+
+    const req2 = await fetch("/api/youtube/best");
+    const res2 = await req2.json();
+
+    document.getElementById("best-vid").src = `https://www.youtube.com/embed/${res2.id}`;
 });
