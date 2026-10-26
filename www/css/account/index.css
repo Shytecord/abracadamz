@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("/css/topnav.css");
+@import url("/css/colors.css");
+
+body {
+    margin: 0;
+    height: auto;
+    min-height: 100dvh;
+    width: 100dvw;
+    background-color: var(--pale-slate);
+
+    font-family: "Google Sans Flex";
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    width: 100vw;
+    height: 86vh;
+
+    display: flex;
+}
+
+.info {
+    width: 50%;
+    height: 86vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0;
+}
+
+.info .avatar {
+    height: 15vh;
+    width: 15vh;
+
+    border-radius: 15px;
+}
+
+.info .displayName {
+    font-size: 2em;
+    margin: 0;
+
+    color: var(--gunmetal);
+}
+
+.info .username {
+    font-size: 1.5em;
+    margin: 0;
+
+    color: var(--slate-grey);
+}
+
+.info .status {
+    font-size: 1.5em;
+    margin: 0;
+    margin-top: 2vh;
+
+    color: var(--bright-snow);
+    
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 1vh;
+}
+
+.status-normal {
+    background-color: green;
+}
+
+.info a {
+    font-size: 1em;
+    margin: 0;
+    margin-top: 2vh;
+
+    color: red;
+    text-decoration: none;
+}
+
+.editor {
+    width: 50%;
+    height: 86vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.editor input {
+    width: 15vw;
+    height: 6vh;
+
+    outline: none;
+    background-color: transparent;
+    
+    border: 2px solid var(--slate-grey);
+    border-radius: 15px;
+
+    box-sizing: border-box;
+    padding-left: 0.5vw;
+}
+
+.editor button {
+    width: 15vw;
+    height: 6vh;
+
+    outline: none;
+    background-color: var(--slate-grey);
+    color: var(--bright-snow);
+    
+    border: 2px solid var(--slate-grey);
+    border-radius: 15px;
+
+    box-sizing: border-box;
+    padding-left: 0.5vw;
+
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.editor button:hover {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--carbon-black);
+}
+
+.editor p {
+    width: 15vw;
+    color: var(--gunmetal);
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.editor #error {
+    width: 15vw;
+    color: red;
+    text-align: center;
+    font-size: 1em;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-y: scroll;
+        flex-direction: column;
+    }
+
+    .main {
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+    }
+    
+    .editor {
+        align-items: center;
+
+        width: 100vw;
+        height: auto;
+    }
+
+    .editor p {
+        width: 100vw;
+        color: var(--gunmetal);
+        text-align: center;
+        font-size: 2em;
+        margin: 0;
+    }
+    
+    .editor input {
+        width: 90vw;
+        height: 10vh;
+
+        padding-left: 4vw;
+        font-size: 1.5em;
+    }
+
+    .editor button {
+        width: 90vw;
+        height: 10vh;
+
+        font-size: 1.5em;
+    }
+
+    .editor #error {
+        font-size: 1.5em;
+        width: 90vw;
+        margin-bottom: 4vh;
+    }
+
+    .info a {
+        font-size: 1.75em;
+        margin-top: 4vh;
+    }
+}

@@ -9,5 +9,9 @@
         "_comment": "Host should be 0.0.0.0 only when using in production (aka serving to the public). You can use 127.0.0.1 to test the site or while using a reverse proxy like nginx",
         "host": "127.0.0.1",
         "port": 8080
+    },
+    "email": {
+        "contact": "contact@abracadamz.shop",
+        "noreply": "noreply@abracadamz.shop"
     }
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Straight BS from the Shytecord and Abracadamz. Along with some of my projects and minigames.">
+
+        <meta property="og:title" content="Abracadamz & The Shytecord">
+        <meta property="og:description" content="Straight BS from the Shytecord and Abracadamz. Along with some of my projects and minigames.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://abracadamz.shop/assets/2026011.jpg">
+        <meta property="og:url" content="https://abracadamz.shop/account">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Abracadamz">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="description" content="...">
+        <link rel="canonical" href="https://abracadamz.shop/account">
+
+        <title>Abracadamz</title>
+        <link rel="stylesheet" href="/css/account/index.css">
+        <link rel="icon" href="/assets/logo.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+        <%- include("../partials/gtag") %>
+    </head>
+    <body>
+        <%- include("../partials/topnav") %>
+
+        <div class="main">
+            <div class="info">
+                <img src="<%= user.avatar %>" class="avatar">
+                <p class="displayName"><%= user.displayName %></p>
+                <p class="username">(<%= user.username %>)</p>
+                <p class="status status-<%= user.status %>"><%= user.status ? String(user.status).toUpperCase() : '' %></p>
+                <a href="/api/account/signout">Logout</a>
+            </div>
+
+            <div class="editor">
+                <p>Account Editor</p>
+                <input id="displayName" type="text" placeholder="Display Name..." value="<%= user.displayName %>">
+                <button id="saveInfo">Save</button>
+                <p id="error"></p>
+            </div>
+        </div>
+
+        <%- include("../partials/footer") %>
+        <script src="/js/account.js"></script>
+        <script src="/js/burger.js"></script>
+    </body>
+</html>

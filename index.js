@@ -10,10 +10,12 @@ mongoose.connect(`mongodb+srv://${config.mongo.username}:${secrets.mongo.passwor
 const app = express();
 const server = http.createServer(app);
 
+app.set("trust proxy", 1);
+app.set("view engine", "ejs");
+
 app.use(express.static("www"));
 app.use(require("body-parser").json());
 app.use(require("cookie-parser")());
-app.set("view engine", "ejs");
 
 app.use("/api", require("./routes/api/root"));
 app.use("/", require("./routes/public/root"));

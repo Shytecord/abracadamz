@@ -1,51 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url("/css/topnav.css");
+@import url("/css/colors.css");
 
 body {
     margin: 0;
-    height: 100dvh;
-    width: 100dvw;
-    background-color: #CED4DA;
+    min-height: 100dvh;
+    width: 100%;
+    background-color: var(--pale-slate);
 
     font-family: "Google Sans Flex";
 
     overflow-x: hidden;
     display: flex;
+    flex-direction: column;
 }
 
 .blocks {
     width: 100%;
-    height: auto;
-    min-height: 50vh;
+    flex: 1 0 auto;
 }
 
 .block {
-    width: 100vw;
+    width: 100%;
     height: auto;
     min-height: 20vh;
-
-    border-bottom: 2px solid #6C757D;
+    border-bottom: 2px solid var(--slate-grey);
 }
 
 #videos {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4vh;
+    flex-direction: column;
+    gap: 2vh;
 
     box-sizing: border-box;
     padding: 4vh;
+    user-select: none;
 }
 
 .video {
-    background-color: #6C757D;
-
+    flex: 1 1 0;
+    min-width: 0;
     box-sizing: border-box;
     padding: 2vh;
-
-    height: auto;
+    background-color: var(--slate-grey);
     border-radius: 15px;
-
     display: flex;
     flex-direction: column;
     gap: 1vh;
@@ -58,19 +58,173 @@ body {
 }
 
 .video p {
-    color: #F8F9FA;
+    color: var(--bright-snow);
     font-size: 1.2em;
     margin: 0;
     user-select: none;
 }
 
+.video-row {
+    display: flex;
+    gap: 2vw;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.video iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 12px;
+}
+
+.cta-row { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: .75rem; 
+    margin-top: 1rem;
+}
+
+.cta-row a {
+    color: var(--carbon-black);
+    text-decoration: none;
+}
+
+.cta-row a:hover {
+    text-decoration: underline;
+}
+
+#videos h2 {
+    font-family: "Google Sans Flex";
+    font-size: 2em;
+    margin: 0;
+    color: var(--carbon-black);
+}
+
+#videos a {
+    font-family: "Google Sans Flex";
+    font-size: 1em;
+    margin: 0;
+    color: var(--carbon-black);
+}
+
+#ident {
+    min-height: 30vh;
+    box-sizing: border-box;
+    padding: 4vh 5vw;
+    text-align: center;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+
+    user-select: none;
+}
+
+#ident h1, #ident p {
+    margin: 0;
+    font-family: "Google Sans Flex";
+}
+
+#ident h1 {
+    font-size: 2.5em;
+}
+
+#ident p {
+    font-size: 1.25em;
+}
+
+#projects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+
+    box-sizing: border-box;
+    padding: 4vh;
+
+    user-select: none;
+}
+
+#projects .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 320px));
+    justify-content: center;
+    gap: 2vw;
+    width: 100%;
+    max-width: 1200px;
+}
+
+
+#projects h2 {
+    font-family: "Google Sans Flex";
+    font-size: 2em;
+    margin: 0;
+    color: var(--carbon-black);
+}
+
+.cards .card {
+    background-color: var(--slate-grey);
+    box-sizing: border-box;
+    padding: 2vh;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border-radius: 15px;
+}
+
+.card img {
+    width: 100%;
+
+    border-radius: 15px;
+}
+
+.card h3 {
+    font-size: 1.5em;
+    margin: 0;
+
+    margin-top: 1vh;
+
+    color: var(--bright-snow);
+}
+
+.card p {
+    font-size: 1.25em;
+    margin: 0;
+
+    margin-top: 1vh;
+
+    color: var(--bright-snow);
+}
+
+.card small {
+    font-size: 1em;
+    margin: 0;
+
+    margin-top: 1vh;
+
+    color: var(--bright-snow);
+}
+
 @media screen and (max-width: 768px) {
-    #videos {
+    .video-row {
         flex-direction: column;
+        gap: 2vh;
     }
 
-    .video iframe {
-        height: auto;
-        width: 80vw;
+    #ident h1 {
+        font-size: 1.75em;
+    }
+
+    #ident p {
+        font-size: 1.1em;
+    }
+
+    #videos,
+    #projects {
+        padding: 3vh 4vw;
     }
 }

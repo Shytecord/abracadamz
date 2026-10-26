@@ -3,38 +3,84 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Abracadamz</title>
+        <meta name="description" content="Straight BS from the Shytecord and Abracadamz. Along with some of my projects and minigames.">
 
+        <meta property="og:title" content="Abracadamz & The Shytecord">
+        <meta property="og:description" content="Straight BS from the Shytecord and Abracadamz. Along with some of my projects and minigames.">
+        <meta property="og:type" content="website">
+        <meta property="og:image" content="https://abracadamz.shop/assets/2026011.jpg">
+        <meta property="og:url" content="https://abracadamz.shop/">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:site_name" content="Abracadamz">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="description" content="...">
+        <link rel="canonical" href="https://abracadamz.shop/">
+
+        <title>Abracadamz</title>
         <link rel="stylesheet" href="/css/index.css">
+        <link rel="icon" href="/assets/logo.png">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
+        <%- include("partials/gtag") %>
     </head>
     <body>
         <%- include("partials/topnav") %>
 
-        <div class="blocks">
-            <div class="block" id="videos">
-                <div class="video">
-                    <p>Latest</p>
-                    <iframe
-                        id="latest-vid"
-                        src="https://www.youtube.com/embed/5wf0ylNt0BY"
-                        frameborder="0"
-                        allowfullscreen
-                        referrerpolicy="strict-origin-when-cross-origin">
-                    </iframe>
+        <main class="blocks">
+            <section class="block" id="ident">
+                <h1>Straight BS from the Shytecord and Abracadamz</h1>
+                <p>Videos, projects, minigames.</p>
+                <div class="cta-row">
+                    <a class="btn" href="#videos">Videos</a>
+                    <a class="btn" href="#projects">Projects</a>
+                    <a class="btn btn-accent" href="https://discord.gg/WWcMn7usNU">Join the Discord</a>
                 </div>
-                <div class="video">
-                    <p>Most Popular</p>
-                    <iframe
-                        src="https://www.youtube.com/embed/1R1BQjC7-qs"
-                        frameborder="0"
-                        allowfullscreen
-                        referrerpolicy="strict-origin-when-cross-origin">
-                    </iframe>
-                </div>
-            </div>
-        </div>
+            </section>
 
+            <section class="block" id="videos">
+                <h2>Videos</h2>
+                <div class="video-row">
+                    <div class="video">
+                        <p>Latest</p>
+                        <iframe 
+                            id="latest-vid"
+                            title="Latest video"
+                            src="https://www.youtube.com/embed/5wf0ylNt0BY"
+                            loading="lazy" 
+                            allowfullscreen
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                    <div class="video">
+                        <p>Most Popular</p>
+                        <iframe 
+                            id="best-vid" 
+                            title="Most popular video"
+                            src="https://www.youtube.com/embed/5wf0ylNt0BY"
+                            loading="lazy"
+                            allowfullscreen
+                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+                <a href="https://youtube.com/@abracadamz">All videos</a>
+            </section>
+
+            <section class="block" id="projects">
+                <h2>Projects</h2>
+                <div class="cards">
+                    <% projects.forEach(p => { %>
+                        <a class="card" href="<%= p.url %>">
+                            <img src="<%= p.thumb %>" loading="lazy">
+                            <h3><%= p.name %></h3>
+                            <p><%= p.blurb %></p>
+                            <small><%= p.tags.join(" & ") %></small>
+                        </a>
+                    <% }) %>
+                </div>
+            </section>
+
+        </main>
+
+        <%- include("partials/footer") %>
         <script src="/js/index.js"></script>
+        <script src="/js/burger.js"></script>
     </body>
 </html>
