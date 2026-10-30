@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const { checkAuth } = require("../../utils");
 const Account = require("../../schema/Account");
+const OIDC = require("../../schema/OIDC");
 const fs = require("fs");
 
 const config = require("../../config.json");
@@ -14,9 +15,7 @@ const KEY = crypto.createPrivateKey(fs.readFileSync(path.join(__dirname, "../../
 const PUB = crypto.createPublicKey(KEY);
 const KID = crypto.createHash("sha256").update(PUB.export({ type: "spki", format: "der" })).digest("base64url").slice(0, 16);
 
-const CLIENTS = {
-    "woh-oidc": { redirectUris: ["http://127.0.0.1:53682/callback"] },
-};
+const getClient = (id) => (typeof id === "string" ? OIDC.findOne({ id }).lean() : null);
 
 const codes = new Map();
 
@@ -51,30 +50,35 @@ router.get("/jwks.json", (req, res) => {
     res.json({ keys: [{ ...PUB.export({ format: "jwk" }), kid: KID, use: "sig", alg: "RS256" }] });
 });
 
-router.get("/authorize", checkAuth, (req, res) => {
-    const { client_id, redirect_uri, response_type, code_challenge, code_challenge_method, state, nonce } = req.query;
+router.get("/authorize", checkAuth, async (req, res) => {
+    try {
+        const { client_id, redirect_uri, response_type, code_challenge, code_challenge_method, state, nonce } = req.query;
 
-    const client = CLIENTS[client_id];
-    if (!client || !client.redirectUris.includes(redirect_uri))
-        return res.status(400).send("invalid client or redirect_uri");
+        const client = await getClient(client_id);
+        if (!client || typeof redirect_uri !== "string" || !client.redirectUris.includes(redirect_uri))
+            return res.status(400).send("invalid client or redirect_uri");
 
-    const back = (params) => {
-        const u = new URL(redirect_uri);
-        for (const [k, v] of Object.entries({ ...params, state })) if (v) u.searchParams.set(k, v);
-        return res.redirect(u.toString());
-    };
+        const back = (params) => {
+            const u = new URL(redirect_uri);
+            for (const [k, v] of Object.entries({ ...params, state })) if (v) u.searchParams.set(k, v);
+            return res.redirect(u.toString());
+        };
 
-    if (response_type !== "code") return back({ error: "unsupported_response_type" });
-    if (!code_challenge || code_challenge_method !== "S256") return back({ error: "invalid_request" });
+        if (response_type !== "code") return back({ error: "unsupported_response_type" });
+        if (!code_challenge || code_challenge_method !== "S256") return back({ error: "invalid_request" });
 
-    if (!req.user) return res.redirect(`/account/signin?returnTo=${encodeURIComponent(req.originalUrl)}`);
+        if (!req.user) return res.redirect(`/account/signin?returnTo=${encodeURIComponent(req.originalUrl)}`);
 
-    const code = crypto.randomBytes(32).toString("base64url");
-    codes.set(code, {
-        userId: req.user._id, clientId: client_id, redirectUri: redirect_uri,
-        challenge: code_challenge, nonce, exp: Date.now() + 60_000,
-    });
-    back({ code });
+        const code = crypto.randomBytes(32).toString("base64url");
+        codes.set(code, {
+            userId: req.user._id, clientId: client_id, redirectUri: redirect_uri,
+            challenge: code_challenge, nonce, exp: Date.now() + 60_000,
+        });
+        back({ code });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("server error");
+    }
 });
 
 router.post("/token", urlencoded({ extended: false }), async (req, res) => {
