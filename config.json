@@ -13,5 +13,8 @@
     "email": {
         "contact": "contact@abracadamz.shop",
         "noreply": "noreply@abracadamz.shop"
+    },
+    "oidc": {
+        "issuer": "https://3z9wh4mv-8080.use.devtunnels.ms/oidc"
     }
 }

@@ -9,76 +9,37 @@
         <meta property="og:description" content="Straight BS from the Shytecord and Abracadamz. Along with some of my projects and minigames.">
         <meta property="og:type" content="website">
         <meta property="og:image" content="https://abracadamz.shop/assets/2026011.jpg">
-        <meta property="og:url" content="https://abracadamz.shop/">
+        <meta property="og:url" content="https://abracadamz.shop/woh">
         <meta property="og:locale" content="en_US">
         <meta property="og:site_name" content="Abracadamz">
         <meta name="twitter:card" content="summary_large_image">
 
         <title>Abracadamz</title>
-        <link rel="stylesheet" href="/css/index.css">
+        <link rel="stylesheet" href="/css/woh/index.css">
         <link rel="icon" href="/assets/logo.png">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0">
-        <%- include("partials/gtag") %>
+        <%- include("../partials/gtag") %>
     </head>
     <body>
-        <%- include("partials/topnav") %>
+        <%- include("../partials/topnav") %>
 
-        <main class="blocks">
-            <section class="block" id="ident">
-                <h1>Straight BS from the Shytecord and Abracadamz</h1>
-                <p>Videos, projects, minigames.</p>
-                <div class="cta-row">
-                    <a class="btn" href="#videos">Videos</a>
-                    <a class="btn" href="#projects">Projects</a>
-                    <a class="btn btn-accent" href="https://discord.gg/WWcMn7usNU">Join the Discord</a>
+        <main>
+            <img src="/assets/woh-large.png" class="large-logo">
+
+            <div class="sections">
+                <div class="about">
+                    <img src="https://placehold.co/1920x1080.png" alt="Screenshot">
+                    <p>A chaotic gamemode for Rainbow Six Siege. You and up to 9 friends roll for a disability. Either as a team or individually.</p>
                 </div>
-            </section>
 
-            <section class="block" id="videos">
-                <h2>Videos</h2>
-                <div class="video-row">
-                    <div class="video">
-                        <p>Latest</p>
-                        <iframe 
-                            id="latest-vid"
-                            title="Latest video"
-                            src="https://www.youtube.com/embed/5wf0ylNt0BY"
-                            loading="lazy" 
-                            allowfullscreen
-                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
-                    <div class="video">
-                        <p>Most Popular</p>
-                        <iframe 
-                            id="best-vid" 
-                            title="Most popular video"
-                            src="https://www.youtube.com/embed/5wf0ylNt0BY"
-                            loading="lazy"
-                            allowfullscreen
-                            referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    </div>
+                <div class="dlinks">
+                    <a href="/woh/download">Direct Download</a>
+                    <a href="https://abracadamz.itch.io">Itch</a>
                 </div>
-                <a href="https://youtube.com/@abracadamz">All videos</a>
-            </section>
-
-            <section class="block" id="projects">
-                <h2>Projects</h2>
-                <div class="cards">
-                    <% projects.forEach(p => { %>
-                        <a class="card" href="<%= p.url %>">
-                            <img src="<%= p.thumb %>" loading="lazy">
-                            <h3><%= p.name %></h3>
-                            <p><%= p.blurb %></p>
-                            <small><%= p.tags.join(" & ") %></small>
-                        </a>
-                    <% }) %>
-                </div>
-            </section>
-
+            </div>
         </main>
 
-        <%- include("partials/footer") %>
-        <script src="/js/index.js"></script>
+        <%- include("../partials/footer") %>
         <script src="/js/burger.js"></script>
     </body>
 </html>

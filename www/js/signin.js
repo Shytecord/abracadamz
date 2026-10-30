@@ -34,5 +34,10 @@ document.getElementById("signin").onclick = async () => {
         return;
     }
 
-    window.location.href = res.redirect;
+    const params = new URLSearchParams(window.location.search);
+    const returnTo = params.get("returnTo");
+
+    const safe = returnTo && /^\/(?![/\\])/.test(returnTo);
+
+    window.location.href = safe ? returnTo : res.redirect;
 };

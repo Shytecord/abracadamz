@@ -17,6 +17,7 @@ app.use(express.static("www"));
 app.use(require("body-parser").json());
 app.use(require("cookie-parser")());
 
+app.use("/oidc", require("./routes/api/oidc"));
 app.use("/api", require("./routes/api/root"));
 app.use("/", require("./routes/public/root"));
 
