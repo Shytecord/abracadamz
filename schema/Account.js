@@ -24,9 +24,9 @@ const AccountSchema = new mongoose.Schema({
     },
     displayName: { type: String },
     avatar: { type: String },
-    roles: {
-        type: Number,
-        default: 2
+    permissions: {
+        type: [String],
+        default: ["DEFAULT"]
     },
     status: {
         type: String,
